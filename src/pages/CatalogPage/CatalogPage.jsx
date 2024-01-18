@@ -3,6 +3,7 @@ import Filter from "../../components/Filter/Filter";
 import CarList from "../../components/CarList/CarList";
 import Pagination from "../../components/Pagination/Pagination";
 import { Section } from "../../components/Section/Section";
+import { Container } from "./CatalogPage.styled";
 
 const CatalogPage = () => {
  const [filters, setFilters] = useState({
@@ -21,11 +22,11 @@ const CatalogPage = () => {
  };
  return (
   <Section>
-   <div>
+   <Container>
     <Filter onFilterChange={handleFilterChange} onSearch={handleSearch} />
     <CarList filters={filters} />
     <Pagination />
-   </div>
+   </Container>
   </Section>
  );
 };
