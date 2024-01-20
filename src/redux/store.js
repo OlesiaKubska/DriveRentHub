@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
  persistStore,
  persistReducer,
@@ -11,19 +11,23 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import advertsReducer from "./advertsSlice";
+import favoritesReducer from "./favoritesSlice";
+
+const rootReducer = combineReducers({
+ adverts: advertsReducer,
+ favorites: favoritesReducer, // Додайте редюсер улюблених оголошень
+});
 
 const persistConfig = {
  key: "root",
  storage,
+ whitelist: ["favorites"],
 };
 
-const persistedReducer = persistReducer(persistConfig, advertsReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
- reducer: {
-  // тут ви використовуєте persistedReducer
-  adverts: persistedReducer,
- },
+ reducer: persistedReducer,
  middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
    serializableCheck: {

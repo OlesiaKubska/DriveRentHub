@@ -33,5 +33,4 @@ const advertsSlice = createSlice({
 
 export default advertsSlice.reducer;
 
-// Якщо у вас є синхронні дії, експортуйте їх тут
 export const { someAction } = advertsSlice.actions;

@@ -4,6 +4,7 @@ import CarList from "../../components/CarList/CarList";
 import Pagination from "../../components/Pagination/Pagination";
 import { Section } from "../../components/Section/Section";
 import { Container } from "./CatalogPage.styled";
+import Header from "../../components/Header/Header";
 
 const CatalogPage = () => {
  const [filters, setFilters] = useState({
@@ -22,6 +23,7 @@ const CatalogPage = () => {
  };
  return (
   <Section>
+   <Header />
    <Container>
     <Filter onFilterChange={handleFilterChange} onSearch={handleSearch} />
     <CarList filters={filters} />

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
 export const SectionWrapper = styled.div`
- /* padding: 30px;
- border: 1px solid red; */
+ padding: 30px;
 `;

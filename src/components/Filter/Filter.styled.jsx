@@ -12,7 +12,7 @@ export const FormContainer = styled.div`
  }
 
  @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-  margin: 150px;
+  /* margin: 150px; */
  }
 `;
 
@@ -59,8 +59,8 @@ export const SelectPrice = styled.select`
 
 export const InputFrom = styled.input`
  border: none;
- width: 118px;
- padding: 14px 50px 14px 24px;
+ width: 100px;
+ padding: 14px 46px 14px 24px;
  align-items: center;
  border-radius: 14px;
  border-right: 1px solid rgba(138, 138, 137, 0.2);
@@ -75,8 +75,8 @@ export const InputFrom = styled.input`
 
 export const InputTo = styled.input`
  border: none;
- width: 118px;
- padding: 14px 50px 14px 24px;
+ width: 100px;
+ padding: 14px 46px 14px 24px;
  align-items: center;
  border-radius: 14px;
  border-right: 1px solid rgba(138, 138, 137, 0.2);
@@ -101,7 +101,7 @@ export const Button = styled.button`
  color: ${(props) => props.theme.colors.white};
  border-radius: 12px;
  font-size: ${(props) => props.theme.fontSizes.medium};
- margin-top: ${(props) => props.theme.spacing(4)};
+ margin-top: 20px;
  transition: background-color ${(props) => props.theme.animation.cubicBezier};
 
  &:hover {

@@ -4,10 +4,10 @@ const apiClient = axios.create({
  baseURL: "https://65a97c89219bfa3718695671.mockapi.io/",
 });
 
-export const fetchAdverts = async () => {
+export const fetchAdverts = async (page = 1, limit = 12) => {
  // eslint-disable-next-line no-useless-catch
  try {
-  const response = await apiClient.get("/adverts");
+  const response = await apiClient.get(`/adverts?page=${page}&limit=${limit}`);
   return response.data;
  } catch (error) {
   throw error;
