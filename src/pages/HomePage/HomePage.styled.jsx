@@ -8,8 +8,6 @@ import imgHomeTabl1x from "../../assets/images/background/Bg-tablet.jpg";
 
 export const HomeSection = styled(Section)`
  background-position: center;
- /* padding-top: 24px;
- padding-bottom: 24px; */
  background-image: -webkit-image-set(url(${imgHomeMob1x}) 1x);
  background-size: cover;
  background-repeat: no-repeat;
@@ -33,13 +31,30 @@ export const Container = styled.div`
  flex-direction: column;
  align-items: center;
  text-align: center;
+ background-color: rgba(255, 255, 255, 0.7);
+
+ h2 {
+  color: ${({ theme }) => theme.colors.accent};
+ }
 `;
 
 export const Heading = styled.h1`
- color: ${({ theme }) => theme.colors.dark};
+ color: ${({ theme }) => theme.colors.accent};
+ margin-top: 50px;
 `;
 
-export const Description = styled.p`
+export const Description = styled.ul`
  color: ${({ theme }) => theme.colors.dark};
- font-size: ${({ theme }) => theme.fontSizes.medium};
+ font-size: 18px;
+ text-align: start;
+ margin-bottom: 50px;
+
+ li {
+  list-style-type: square;
+  margin-bottom: 16px;
+ }
+
+ @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  font-size: 24px;
+ }
 `;

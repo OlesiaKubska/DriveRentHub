@@ -3,6 +3,7 @@ import { getAllAdverts, getFavoritesAdverts } from "../../redux/selectors";
 import AdvertCard from "../../components/AdvertCard/AdvertCard";
 import { CardGrid } from "../../components/CarList/CarList.styled";
 import Header from "../../components/Header/Header";
+import { Section } from "../../components/Section/Section";
 
 const FavoritesPage = () => {
  const favorites = useSelector(getFavoritesAdverts);
@@ -13,7 +14,7 @@ const FavoritesPage = () => {
  );
 
  return (
-  <>
+  <Section>
    <Header />
    <div>
     <CardGrid>
@@ -22,7 +23,7 @@ const FavoritesPage = () => {
      ))}
     </CardGrid>
    </div>
-  </>
+  </Section>
  );
 };
 

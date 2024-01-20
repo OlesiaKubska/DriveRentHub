@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Filter from "../../components/Filter/Filter";
 import CarList from "../../components/CarList/CarList";
-import Pagination from "../../components/Pagination/Pagination";
 import { Section } from "../../components/Section/Section";
 import { Container } from "./CatalogPage.styled";
 import Header from "../../components/Header/Header";
@@ -27,7 +26,6 @@ const CatalogPage = () => {
    <Container>
     <Filter onFilterChange={handleFilterChange} onSearch={handleSearch} />
     <CarList filters={filters} />
-    <Pagination />
    </Container>
   </Section>
  );

@@ -1,4 +1,11 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+ setBrand,
+ setPrice,
+ setMileage,
+ updateFilters,
+} from "../../redux/filtersSlice";
+// import { getFilteredAdverts } from "../../redux/selectors";
 import PropTypes from "prop-types";
 import brands from "../../makes.json";
 import {
@@ -12,39 +19,29 @@ import {
  SelectPrice,
 } from "./Filter.styled";
 
-const Filter = ({ onSearch, onFilterChange }) => {
- const [selectedPrice, setSelectedPrice] = useState("");
- const [mileage, setMileage] = useState({ from: "", to: "" });
- const [filters, setFilters] = useState({
-  brand: "",
-  price: { min: "", max: "" },
-  mileage: { min: "", max: "" },
- });
+const Filter = () => {
+ const dispatch = useDispatch();
+ const filters = useSelector((state) => state.filters);
 
  const handleBrandChange = (event) => {
-  const newFilters = { ...filters, brand: event.target.value };
-  setFilters(newFilters);
-  onFilterChange(newFilters);
+  dispatch(setBrand(event.target.value));
  };
 
  const handlePriceChange = (event) => {
-  const newPrice = event.target.value;
-  setSelectedPrice(newPrice);
-  // Припускаючи, що ви хочете оновити об'єкт filters з новою ціною
-  onFilterChange({ ...filters, price: newPrice });
+  dispatch(setPrice(event.target.value));
  };
 
  const handleMileageChange = (event) => {
   const { name, value } = event.target;
-  setMileage((prevMileage) => ({
-   ...prevMileage,
-   [name]: value.replace(/\D/g, ""), // Видаляємо всі нечислові символи
-  }));
+  dispatch(
+   setMileage({ ...filters.mileage, [name]: value.replace(/\D/g, "") })
+  );
  };
 
  const handleSearch = (event) => {
   event.preventDefault();
-  onSearch(filters); // Викликаємо функцію onSearch і передаємо їй поточні фільтри
+  dispatch(updateFilters(filters));
+  // Тут можна виконати додаткову логіку, якщо потрібно
  };
 
  return (
@@ -63,7 +60,7 @@ const Filter = ({ onSearch, onFilterChange }) => {
     </div>
     <div>
      <Label>Price/ 1 hour</Label>
-     <SelectPrice value={selectedPrice} onChange={handlePriceChange}>
+     <SelectPrice value={filters.price} onChange={handlePriceChange}>
       <option value="">To $</option>
       <option value="30">30</option>
       <option value="40">40</option>
@@ -78,14 +75,14 @@ const Filter = ({ onSearch, onFilterChange }) => {
      <InputFrom
       type="text"
       name="from"
-      value={mileage.from}
+      value={filters.mileage.min}
       onChange={handleMileageChange}
       placeholder="From"
      />
      <InputTo
       type="text"
       name="to"
-      value={mileage.to}
+      value={filters.mileage.max}
       onChange={handleMileageChange}
       placeholder="To"
      />

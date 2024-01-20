@@ -10,9 +10,7 @@ const initialState = {
 const advertsSlice = createSlice({
  name: "adverts",
  initialState,
- reducers: {
-  // ...синхронні редюсери
- },
+ reducers: {},
 
  extraReducers: (builder) => {
   builder

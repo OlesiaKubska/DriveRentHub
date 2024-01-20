@@ -97,7 +97,7 @@ export const Condition = styled.p`
  }
 `;
 
-export const RentalCarButton = styled.button`
+export const RentalCarButton = styled.a`
  background-color: ${(props) => props.theme.colors.primary};
  color: ${(props) => props.theme.colors.white};
  font-size: 14px;
@@ -107,6 +107,8 @@ export const RentalCarButton = styled.button`
  border-radius: 12px;
  margin-left: 30px;
  margin-bottom: 30px;
+ max-width: 20%;
+ display: block;
  transition: background-color ${(props) => props.theme.animation.cubicBezier};
 
  &:hover {

@@ -28,7 +28,6 @@ const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
  );
 
  useEffect(() => {
-  // Ця логіка має бути всередині useEffect без умов
   const bodyScroll = (disable) => {
    document.body.style.overflow = disable ? "hidden" : "auto";
   };
@@ -112,7 +111,7 @@ const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
       </Condition>
      </RentalBox>
     </InfoBox>
-    <RentalCarButton>Rental car</RentalCarButton>
+    <RentalCarButton href="tel:+38095678901">Rental car</RentalCarButton>
    </ModalContainer>
   </ModalBackdrop>,
   modalRoot

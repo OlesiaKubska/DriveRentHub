@@ -12,10 +12,12 @@ import {
 import storage from "redux-persist/lib/storage";
 import advertsReducer from "./advertsSlice";
 import favoritesReducer from "./favoritesSlice";
+import filtersReducer from "./filtersSlice";
 
 const rootReducer = combineReducers({
  adverts: advertsReducer,
- favorites: favoritesReducer, // Додайте редюсер улюблених оголошень
+ favorites: favoritesReducer,
+ filters: filtersReducer,
 });
 
 const persistConfig = {

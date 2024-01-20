@@ -1,4 +1,6 @@
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+
 import {
  Container,
  Heading,
@@ -12,15 +14,15 @@ const HomePage = () => {
    <Header />
    <Container>
     <Heading>Welcom to DriveRentHub!</Heading>
+    <h2>Your Trusted Car Rental Partner in Ukraine</h2>
     <Description>
-     DriveRentHub is a leading car rental service in Ukraine, offering a wide
-     range of vehicles to suit every taste and need. From small city cars to
-     large family minivans, our fleet includes a variety of options to meet all
-     your car rental needs. Whether you need a car for a business trip, a family
-     vacation, or just to travel around the city, we provide you with comfort
-     and quality.
+     <li>Wide Range of Vehicles</li>
+     <li>Flexibility for Any Journey</li>
+     <li>Comfort and Quality</li>
+     <li>Affordable Solutions for Everyone</li>
     </Description>
    </Container>
+   <Footer />
   </HomeSection>
  );
 };

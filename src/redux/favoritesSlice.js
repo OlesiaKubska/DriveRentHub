@@ -17,7 +17,6 @@ const favoritesSlice = createSlice({
    }
    localStorage.setItem("favorites", JSON.stringify(state.favorites));
   },
-  // ... Інші редюсери, якщо вони є
  },
 });
 

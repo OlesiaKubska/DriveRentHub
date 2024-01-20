@@ -1,6 +1,7 @@
-// import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from "@reduxjs/toolkit";
 
 const getAdvertsState = (state) => state.adverts;
+const getFilters = (state) => state.filters;
 
 export const getAllAdverts = (state) => getAdvertsState(state).adverts;
 export const getAdvertsLoading = (state) => getAdvertsState(state).loading;
@@ -13,21 +14,26 @@ export const getAdvertDetails = (state, id) => {
 
 export const getFavoritesAdverts = (state) => state.favorites.favorites;
 
-// Селектори для фільтрованих оголошень, якщо вони існують в стані
-// export const getFilteredAdverts = (state) => {
-//  // припустимо у нас є фільтр в стані
-//  const { filter, adverts } = getAdvertsState(state);
-//  // логіка фільтрації, наприклад, за маркою авто
-//  if (filter.brand) {
-//   return adverts.filter((advert) => advert.make === filter.brand);
-//  }
-//  return adverts;
-// };
+export const getFilteredAdverts = createSelector(
+ [getAllAdverts, getFilters],
+ (adverts, filters) => {
+  if (!Array.isArray(adverts)) {
+   console.error("adverts is not an array:", adverts);
+   return [];
+  }
 
-// Селектор для пагінації, якщо потрібно
-// export const getAdvertsForPage = (state, page, advertsPerPage) => {
-//  const allAdverts = getAllAdverts(state);
-//  const startIndex = (page - 1) * advertsPerPage;
-//  const endIndex = startIndex + advertsPerPage;
-//  return allAdverts.slice(startIndex, endIndex);
-// };
+  return adverts.filter((advert) => {
+   const priceOk =
+    (!filters.price.min || advert.rentalPrice >= filters.price.min) &&
+    (!filters.price.max || advert.rentalPrice <= filters.price.max);
+
+   const mileageOk =
+    (!filters.mileage.min || advert.mileage >= filters.mileage.min) &&
+    (!filters.mileage.max || advert.mileage <= filters.mileage.max);
+
+   return (
+    (!filters.brand || advert.make === filters.brand) && priceOk && mileageOk
+   );
+  });
+ }
+);

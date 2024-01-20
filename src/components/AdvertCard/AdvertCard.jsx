@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
+import ImageWithFallback from "../ImageWithFallback/ImageWithFallback";
 
 import {
  Card,
- CarImage,
  CardContent,
  CarTitle,
  CarDetails,
@@ -17,7 +17,10 @@ const AdvertCard = ({ advert, onOpenModal }) => {
  return (
   <Card>
    <CardImageContainer>
-    <CarImage src={advert.img} alt={`${advert.make} ${advert.model}`} />
+    <ImageWithFallback
+     src={advert.img}
+     alt={`${advert.make} ${advert.model}`}
+    />
     <HeartIcon advertId={advert.id} />
    </CardImageContainer>
    <CardContent>
