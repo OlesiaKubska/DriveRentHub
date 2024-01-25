@@ -27,25 +27,37 @@ export const HomeSection = styled(Section)`
 `;
 
 export const Container = styled.div`
+ margin-top: 60px;
+ margin-bottom: 60px;
  display: flex;
  flex-direction: column;
  align-items: center;
  text-align: center;
- background-color: rgba(255, 255, 255, 0.7);
+ background-color: ${({ theme }) => theme.colors.homeBackground};
 
  h2 {
   color: ${({ theme }) => theme.colors.accent};
+  font-size: 18px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+   font-size: 24px;
+  }
  }
 `;
 
 export const Heading = styled.h1`
  color: ${({ theme }) => theme.colors.accent};
+ font-size: 20px;
  margin-top: 50px;
+
+ @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  font-size: 24px;
+ }
 `;
 
 export const Description = styled.ul`
  color: ${({ theme }) => theme.colors.dark};
- font-size: 18px;
+ font-size: 14px;
  text-align: start;
  margin-bottom: 50px;
 

@@ -5,22 +5,45 @@ const initialState = {
  adverts: [],
  loading: false,
  error: null,
+ pagination: {
+  totalItems: 0,
+  totalPages: 0,
+  currentPage: 1,
+  itemsPerPage: 12,
+ },
 };
 
 const advertsSlice = createSlice({
  name: "adverts",
  initialState,
- reducers: {},
+ reducers: {
+  clearAdverts: (state) => {
+   state.adverts = [];
+   state.loading = false;
+   state.error = null;
+  },
+  incrementPage: (state) => {
+   if (state.pagination.currentPage < state.pagination.totalPages) {
+    state.pagination.currentPage += 1;
+   }
+  },
+ },
 
  extraReducers: (builder) => {
   builder
    .addCase(fetchAdvertsAsync.pending, (state) => {
     state.loading = true;
-    state.error = null;
    })
    .addCase(fetchAdvertsAsync.fulfilled, (state, action) => {
-    state.loading = false;
-    state.adverts = action.payload;
+    if (!state.adverts.find((advert) => advert.id === action.payload[0].id)) {
+     state.adverts = [...state.adverts, ...action.payload];
+    }
+
+    if (action.payload.length < state.pagination.itemsPerPage) {
+     state.pagination.totalPages = state.pagination.currentPage;
+    } else {
+     state.pagination.totalPages = state.pagination.currentPage + 1;
+    }
    })
    .addCase(fetchAdvertsAsync.rejected, (state, action) => {
     state.loading = false;
@@ -29,6 +52,5 @@ const advertsSlice = createSlice({
  },
 });
 
+export const { clearAdverts, incrementPage } = advertsSlice.actions;
 export default advertsSlice.reducer;
-
-export const { someAction } = advertsSlice.actions;

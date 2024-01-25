@@ -1,28 +1,27 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilters } from "../../redux/filtersSlice";
+import { getFilteredAdverts } from "../../redux/selectors";
 import Filter from "../../components/Filter/Filter";
 import CarList from "../../components/CarList/CarList";
 import { Section } from "../../components/Section/Section";
 import { Container } from "./CatalogPage.styled";
 import Header from "../../components/Header/Header";
+import ScrollTop from "../../components/ScrollTop/ScrollTop";
 
 const CatalogPage = () => {
- const [filters, setFilters] = useState({
-  brand: "",
-  price: { min: null, max: null },
-  mileage: { min: null, max: null },
- });
+ const dispatch = useDispatch();
+ const filters = useSelector(getFilteredAdverts);
 
- // Обробник для оновлення фільтрів
  const handleFilterChange = (newFilters) => {
-  setFilters(newFilters);
+  dispatch(updateFilters(newFilters));
  };
 
- const handleSearch = () => {
-  // Логіка пошуку з використанням актуальних фільтрів...
- };
+ const handleSearch = () => {};
+
  return (
   <Section>
    <Header />
+   <ScrollTop />
    <Container>
     <Filter onFilterChange={handleFilterChange} onSearch={handleSearch} />
     <CarList filters={filters} />
