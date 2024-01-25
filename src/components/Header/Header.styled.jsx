@@ -6,13 +6,18 @@ export const Navbar = styled.nav`
  justify-content: space-between;
  align-items: center;
  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
- background-color: rgba(255, 255, 255, 0.9);
+ background-color: ${({ theme }) => theme.colors.headerBackground};
 `;
 
 export const NavLink = styled(Link)`
  color: ${({ theme }) => theme.colors.accent};
  margin: 0 10px;
- font-size: ${({ theme }) => theme.fontSizes.medium};
+ font-size: ${({ theme }) => theme.fontSizes.small};
+ transition: color ${(props) => props.theme.animation.cubicBezier};
+
+ @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+ }
 
  &:hover {
   text-decoration: underline;

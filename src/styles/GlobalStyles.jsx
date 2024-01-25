@@ -1,7 +1,8 @@
+import { useContext } from "react";
+import { ThemeContext } from "../components/ThemeProvider/ThemeProvider";
 import { createGlobalStyle } from "styled-components";
-import { theme } from "./theme";
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyleComponent = createGlobalStyle`
     html {
         box-sizing: border-box;
         scroll-behavior: smooth;
@@ -10,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
         font-family: 'Manrope','Montserrat', sans-serif;
-        background: ${theme.colors.mainBackground};
+        background: ${({ theme }) => theme.colors.mainBackground};
         min-height: 100vh;
         font-style: normal;
     }
@@ -51,9 +52,9 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-
-    /* code {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-    } */
 `;
+
+export const GlobalStyles = () => {
+ const { theme } = useContext(ThemeContext);
+ return <GlobalStyleComponent theme={theme} />;
+};
