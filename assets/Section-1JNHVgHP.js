@@ -1,4 +1,4 @@
-import{u as s,L as j,j as o,N as O,R as c,r as w,T as P,P as g}from"./index-JMgtZHdL.js";const S=s.nav`
+import{u as s,L as j,j as o,N as O,R as c,r as w,T as P,P as g}from"./index-Whr-GgWI.js";const S=s.nav`
  display: flex;
  justify-content: space-between;
  align-items: center;
@@ -31,6 +31,6 @@ import{u as s,L as j,j as o,N as O,R as c,r as w,T as P,P as g}from"./index-JMgt
  &:hover {
   color: ${e=>e.theme.colors.primary};
  }
-`,W=()=>{const{themeName:e,toggleTheme:t}=w.useContext(P);return o.jsx(I,{onClick:t,children:o.jsx(R,{children:e==="light"?o.jsx(D,{}):o.jsx(H,{})})})},q=()=>o.jsxs(S,{children:[o.jsx(C,{}),o.jsx(W,{}),o.jsx(m,{to:"/",children:"Home"}),o.jsxs("div",{children:[o.jsx(m,{to:"/catalog",children:"Catalog"}),o.jsx(m,{to:"/favorites",children:"Favorites"})]})]}),F=s.div`
+`,W=()=>{const{themeName:e,toggleTheme:t}=w.useContext(P);return o.jsx(I,{onClick:t,children:o.jsx(R,{children:e==="light"?o.jsx(D,{}):o.jsx(H,{})})})},K=()=>o.jsxs(S,{children:[o.jsx(C,{}),o.jsx(W,{}),o.jsx(m,{to:"/",children:"Home"}),o.jsxs("div",{children:[o.jsx(m,{to:"/catalog",children:"Catalog"}),o.jsx(m,{to:"/favorites",children:"Favorites"})]})]}),F=s.div`
  padding: 30px;
-`,M=({className:e,children:t})=>o.jsx("section",{className:e,children:o.jsx(F,{children:t})});M.propTypes={className:g.string,children:g.node.isRequired};export{q as H,M as S};
+`,M=({className:e,children:t})=>o.jsx("section",{className:e,children:o.jsx(F,{children:t})});M.propTypes={className:g.string,children:g.node.isRequired};export{x as G,K as H,M as S};
