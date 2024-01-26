@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
  flex-direction: column;
  align-items: center;
  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
- background-color: rgba(255, 255, 255, 0.9);
+ background-color: ${({ theme }) => theme.colors.headerBackground};
  width: 100%;
  padding-top: 10px;
  padding-bottom: 10px;
@@ -45,6 +45,7 @@ export const SocialLinks = styled.div`
   margin: 0 10px;
   color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
+  transition: color ${(props) => props.theme.animation.cubicBezier};
 
   &:hover {
    text-decoration: underline;
@@ -56,4 +57,8 @@ export const SocialLinks = styled.div`
 export const FooterCopy = styled.p`
  color: ${({ theme }) => theme.colors.accent};
  margin-bottom: 0;
+`;
+
+export const Icon = styled.span`
+ font-size: 22px;
 `;

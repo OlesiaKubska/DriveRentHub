@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAdvertsAsync } from "../../redux/operations";
-import { getFilteredAdverts } from "../../redux/selectors";
-// import { updateFilters } from "../../redux/filtersSlice";
+import { getFilteredAdverts, selectPagination } from "../../redux/selectors";
+import { incrementPage } from "../../redux/advertsSlice";
 import AdvertCard from "../AdvertCard/AdvertCard";
 import ModalLearnMore from "../ModalLearnMore/ModalLearnMore";
 import { CardGrid, Button } from "./CarList.styled";
@@ -12,15 +12,26 @@ const CarList = () => {
  const [selectedAdvertId, setSelectedAdvertId] = useState(null);
  const dispatch = useDispatch();
  const adverts = useSelector(getFilteredAdverts);
- const filters = useSelector((state) => state.filters);
- const [page, setPage] = useState(1);
+ const pagination = useSelector(selectPagination);
 
  useEffect(() => {
-  dispatch(fetchAdvertsAsync({ page, limit: 12, filters }));
- }, [dispatch, page, filters]);
+  dispatch(
+   fetchAdvertsAsync({
+    page: pagination.currentPage,
+    limit: pagination.itemsPerPage,
+   })
+  );
+ }, [
+  pagination.currentPage,
+  dispatch,
+  pagination.itemsPerPage,
+  pagination.totalItems,
+ ]);
 
  const handleLoadMore = () => {
-  setPage((prevPage) => prevPage + 1);
+  if (pagination.currentPage < pagination.totalPages) {
+   dispatch(incrementPage());
+  }
  };
 
  const handleOpenModal = (id) => {
@@ -33,6 +44,8 @@ const CarList = () => {
   setSelectedAdvertId(null);
  };
 
+ const showLoadMoreButton = pagination.currentPage < pagination.totalPages;
+
  return (
   <div>
    <CardGrid>
@@ -44,7 +57,7 @@ const CarList = () => {
      />
     ))}
    </CardGrid>
-   <Button onClick={handleLoadMore}>Load more</Button>
+   {showLoadMoreButton && <Button onClick={handleLoadMore}>Load more</Button>}
    <ModalLearnMore
     isOpen={isModalOpen}
     onClose={handleCloseModal}

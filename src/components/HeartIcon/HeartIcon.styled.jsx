@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 export const HeartIconButton = styled.button`
  position: absolute;
@@ -10,18 +11,20 @@ export const HeartIconButton = styled.button`
  background-color: transparent;
 `;
 
-export const HeartSvg = styled.svg`
+export const StyledFaHeart = styled(FaHeart)`
  width: 100%;
  height: 100%;
- fill: ${(props) =>
-  props.$isFavorite ? props.theme.colors.accent : "transparent"};
- stroke: ${(props) =>
-  props.$isFavorite ? props.theme.colors.accent : props.theme.colors.white};
- stroke-width: 1px;
+ color: ${(props) => props.theme.colors.accent};
+`;
+
+export const StyledFaRegHeart = styled(FaRegHeart)`
+ width: 100%;
+ height: 100%;
+ color: ${(props) => props.theme.colors.white};
+ transition: color ${(props) => props.theme.animation.cubicBezier};
 
  &:hover,
  &:focus {
-  fill: ${(props) => props.theme.colors.accent};
-  stroke: ${(props) => props.theme.colors.accent};
+  color: ${(props) => props.theme.colors.accent};
  }
 `;

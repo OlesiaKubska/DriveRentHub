@@ -1,3 +1,5 @@
+import { FaFacebookF, FaTelegramPlane, FaInstagram } from "react-icons/fa";
+
 import {
  FooterContainer,
  SocialLinks,
@@ -5,6 +7,7 @@ import {
  FooterCopy,
  FooterBox,
  TextBox,
+ Icon,
 } from "./Footer.styled";
 
 const Footer = () => {
@@ -12,9 +15,21 @@ const Footer = () => {
   <FooterContainer>
    <FooterBox>
     <SocialLinks>
-     <a href="https://facebook.com">Facebook</a>
-     <a href="https://twitter.com">Twitter</a>
-     <a href="https://instagram.com">Instagram</a>
+     <a href="https://facebook.com">
+      <Icon>
+       <FaFacebookF />
+      </Icon>
+     </a>
+     <a href="https://telegram.com">
+      <Icon>
+       <FaTelegramPlane />
+      </Icon>
+     </a>
+     <a href="https://instagram.com">
+      <Icon>
+       <FaInstagram />
+      </Icon>
+     </a>
     </SocialLinks>
     <TextBox>
      <FooterText>Email: info@drivehub.com</FooterText>

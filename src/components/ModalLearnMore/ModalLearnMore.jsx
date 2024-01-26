@@ -16,9 +16,9 @@ import {
  RentalBox,
  Condition,
  Title,
- CloseIcon,
+ StyledFaTimes,
 } from "./ModalLearnMore.styled";
-import sprite from "../../assets/sprite/symbol-defs.svg";
+
 import { ModelName, CarDetails } from "../AdvertCard/AdvertCard.styled";
 
 const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
@@ -69,9 +69,7 @@ const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
   <ModalBackdrop onClick={onClose}>
    <ModalContainer onClick={(e) => e.stopPropagation()}>
     <CloseButton onClick={onClose}>
-     <CloseIcon>
-      <use href={`${sprite}#icon-outline`}></use>
-     </CloseIcon>
+     <StyledFaTimes />
     </CloseButton>
     <InfoBox>
      <CarImage
@@ -84,11 +82,12 @@ const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
      </CarTitle>
      <CarDetails>
       {advertDetails.address.split(", ").slice(-2).join(" | ")} |{" "}
-      {advertDetails.rentalCompany} | Premium
+      {`Id: ${advertDetails.id}`} | {`Year: ${advertDetails.year}`} |{" "}
+      {`Type: ${advertDetails.type}`}
      </CarDetails>
      <CarDetails>
-      {advertDetails.type} | {advertDetails.model} | {advertDetails.id} |{" "}
-      {advertDetails.functionalities[0]}
+      {`Fuel Consumption: ${advertDetails.fuelConsumption}`} |{" "}
+      {`Engine Size: ${advertDetails.engineSize}`}
      </CarDetails>
      <Description>{advertDetails.description}</Description>
      <Title>Accessories and functionalities:</Title>
@@ -110,8 +109,8 @@ const ModalLearnMore = ({ isOpen, onClose, advertId }) => {
        <HighlightNumber text={`Price: ${advertDetails.rentalPrice}`} />
       </Condition>
      </RentalBox>
+     <RentalCarButton href="tel:+38095678901">Rental car</RentalCarButton>
     </InfoBox>
-    <RentalCarButton href="tel:+38095678901">Rental car</RentalCarButton>
    </ModalContainer>
   </ModalBackdrop>,
   modalRoot

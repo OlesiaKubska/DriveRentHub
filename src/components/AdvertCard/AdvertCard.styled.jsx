@@ -16,7 +16,7 @@ export const Card = styled.div`
 
  &:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: box-shadow ${(props) => props.theme.animation.cubicBezier};
+  transition: box-shadow ${({ theme }) => theme.animation.cubicBezier};
  }
 `;
 
@@ -39,37 +39,37 @@ export const CardContent = styled.div`
 `;
 
 export const CarTitle = styled.h3`
- color: ${(props) => props.theme.colors.dark};
+ color: ${({ theme }) => theme.colors.dark};
  font-size: 16px;
 `;
 
 export const ModelName = styled.span`
- color: ${(props) => props.theme.colors.primary};
+ color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Span = styled.h3`
- color: ${(props) => props.theme.colors.dark};
+ color: ${({ theme }) => theme.colors.dark};
  font-size: 16px;
 `;
 
 export const CarDetails = styled.p`
- color: ${(props) => props.theme.colors.gray};
+ color: ${({ theme }) => theme.colors.gray};
  font-size: 12px;
  margin-bottom: 4px;
 `;
 
 export const LearnMoreButton = styled.button`
- background-color: ${(props) => props.theme.colors.primary};
- color: ${(props) => props.theme.colors.white};
+ background-color: ${({ theme }) => theme.colors.primary};
+ color: ${({ theme }) => theme.colors.white};
  border: none;
- font-size: ${(props) => props.theme.fontSizes.medium};
+ font-size: ${({ theme }) => theme.fontSizes.medium};
  padding: 10px 20px;
  border-radius: 12px;
  width: 100%;
  margin-top: 28px;
- transition: background-color ${(props) => props.theme.animation.cubicBezier};
+ transition: background-color ${({ theme }) => theme.animation.cubicBezier};
 
  &:hover {
-  background-color: ${(props) => props.theme.colors.accent};
+  background-color: ${({ theme }) => theme.colors.accent};
  }
 `;

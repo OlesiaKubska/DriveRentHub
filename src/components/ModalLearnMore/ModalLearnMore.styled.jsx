@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaTimes } from "react-icons/fa";
 
 export const ModalBackdrop = styled.div`
  position: fixed;
@@ -11,15 +12,13 @@ export const ModalBackdrop = styled.div`
  align-items: center;
  z-index: 10;
  overflow: auto;
- background: rgba(18, 20, 23, 0.5);
+ background: ${(props) => props.theme.colors.modalBackground2};
 `;
 
 export const ModalContainer = styled.div`
- background: white;
+ background: ${(props) => props.theme.colors.mainBackground};
  width: auto;
  max-width: 541px;
- height: auto;
- /* max-height: 752px; */
  border-radius: 12px;
  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
  z-index: 11;
@@ -36,14 +35,15 @@ export const CloseButton = styled.button`
  height: 18px;
 `;
 
-export const CloseIcon = styled.svg`
+export const StyledFaTimes = styled(FaTimes)`
  width: 100%;
  height: 100%;
- stroke: ${(props) => props.theme.colors.dark};
+ fill: ${(props) => props.theme.colors.dark};
+ transition: fill ${(props) => props.theme.animation.cubicBezier};
 
  &:hover,
  &:focus {
-  stroke: ${(props) => props.theme.colors.accent};
+  fill: ${(props) => props.theme.colors.accent};
  }
 `;
 
@@ -52,11 +52,11 @@ export const InfoBox = styled.div`
 `;
 
 export const CarImage = styled.img`
- margin-top: 20px;
+ margin-top: 10px;
  width: 100%;
  object-fit: cover;
  border-radius: 12px;
- height: auto;
+ max-height: 280px;
  margin-bottom: 10px;
 `;
 
@@ -89,8 +89,9 @@ export const Condition = styled.p`
  padding: 7px 14px;
  justify-content: center;
  align-items: center;
- background: #f9f9f9;
+ background: ${(props) => props.theme.colors.modalBackground};
  margin: 0;
+ color: ${(props) => props.theme.colors.dark};
 
  &:nth-child(2) {
   grid-column: 2 / 4;
@@ -105,9 +106,10 @@ export const RentalCarButton = styled.a`
  font-size: ${(props) => props.theme.fontSizes.medium};
  padding: 10px 20px;
  border-radius: 12px;
+ margin-top: 10px;
  margin-left: 30px;
  margin-bottom: 30px;
- max-width: 20%;
+ max-width: 25%;
  display: block;
  transition: background-color ${(props) => props.theme.animation.cubicBezier};
 

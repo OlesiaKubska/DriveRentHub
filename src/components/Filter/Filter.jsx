@@ -4,9 +4,8 @@ import {
  setPrice,
  setMileage,
  updateFilters,
+ resetFilters,
 } from "../../redux/filtersSlice";
-// import { getFilteredAdverts } from "../../redux/selectors";
-import PropTypes from "prop-types";
 import brands from "../../makes.json";
 import {
  FormContainer,
@@ -28,20 +27,33 @@ const Filter = () => {
  };
 
  const handlePriceChange = (event) => {
-  dispatch(setPrice(event.target.value));
+  const priceValue = event.target.value;
+  dispatch(setPrice(priceValue));
  };
 
  const handleMileageChange = (event) => {
   const { name, value } = event.target;
-  dispatch(
-   setMileage({ ...filters.mileage, [name]: value.replace(/\D/g, "") })
-  );
+  if (!isNaN(value) && value.trim() !== "") {
+   dispatch(setMileage({ ...filters.mileage, [name]: value }));
+  }
+ };
+
+ const priceOptions = [];
+ for (let i = 10; i <= 500; i += 10) {
+  priceOptions.push(i);
+ }
+
+ const handleSearchClick = () => {
+  dispatch(updateFilters(filters));
+ };
+
+ const handleReset = () => {
+  dispatch(resetFilters());
  };
 
  const handleSearch = (event) => {
   event.preventDefault();
   dispatch(updateFilters(filters));
-  // Тут можна виконати додаткову логіку, якщо потрібно
  };
 
  return (
@@ -62,12 +74,11 @@ const Filter = () => {
      <Label>Price/ 1 hour</Label>
      <SelectPrice value={filters.price} onChange={handlePriceChange}>
       <option value="">To $</option>
-      <option value="30">30</option>
-      <option value="40">40</option>
-      <option value="50">50</option>
-      <option value="60">60</option>
-      <option value="70">70</option>
-      <option value="80">80</option>
+      {priceOptions.map((price) => (
+       <option key={price} value={price}>
+        ${price}
+       </option>
+      ))}
      </SelectPrice>
     </div>
     <div>
@@ -87,15 +98,15 @@ const Filter = () => {
       placeholder="To"
      />
     </div>
-    <Button type="submit">Search</Button>
+    <Button type="button" onClick={handleSearchClick}>
+     Search
+    </Button>
+    <Button type="button" onClick={handleReset}>
+     Reset Filters
+    </Button>
    </Form>
   </FormContainer>
  );
-};
-
-Filter.propTypes = {
- onFilterChange: PropTypes.func.isRequired,
- onSearch: PropTypes.func.isRequired,
 };
 
 export default Filter;
