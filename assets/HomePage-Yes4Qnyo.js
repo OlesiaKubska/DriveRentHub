@@ -1,4 +1,4 @@
-import{u as o,j as t}from"./index-YQZ0h6uX.js";import{F as r,a as s,b as a,S as c,H as l}from"./Section-8ODJpJQy.js";const d=o.footer`
+import{u as o,j as t}from"./index-0Fky9f--.js";import{F as r,a as s,b as a,S as c,H as l}from"./Section-WZF-wg2v.js";const d=o.footer`
  text-align: start;
  display: flex;
  flex-direction: column;
