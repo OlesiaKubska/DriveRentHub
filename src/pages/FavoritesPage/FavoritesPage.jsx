@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAdverts, getFavoritesAdverts } from "../../redux/selectors";
 import AdvertCard from "../../components/AdvertCard/AdvertCard";
-import { CardGrid } from "../../components/CarList/CarList.styled";
+import { Card } from "../../components/CarList/CarList.styled";
 import Header from "../../components/Header/Header";
 import { Section } from "../../components/Section/Section";
 import { Box } from "./FavoritesPage.styled";
@@ -32,7 +32,7 @@ const FavoritesPage = () => {
   <Section>
    <Header />
    <Box>
-    <CardGrid>
+    <Card>
      {favoriteAdverts.map((advert) => (
       <AdvertCard
        key={advert.id}
@@ -40,7 +40,7 @@ const FavoritesPage = () => {
        onOpenModal={handleOpenModal}
       />
      ))}
-    </CardGrid>
+    </Card>
    </Box>
    <ModalLearnMore
     isOpen={isModalOpen}
