@@ -2,11 +2,18 @@ import styled from "styled-components";
 
 export const CardImageContainer = styled.div`
  position: relative;
- width: 100%;
- height: 200px;
+ width: 274px;
+ height: 274px;
+
+ @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  width: 320px;
+  height: 320px;
+ }
 `;
 
-export const Card = styled.div`
+export const CardItem = styled.li`
+ width: 274px;
+ height: 426px;
  display: flex;
  flex-direction: column;
  justify-content: space-between;
@@ -18,16 +25,22 @@ export const Card = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow ${({ theme }) => theme.animation.cubicBezier};
  }
+
+ @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  width: 320px;
+  height: 426px;
+ }
 `;
 
 export const CarImage = styled.img`
  width: 100%;
- height: 200px;
+ height: 100%;
  object-fit: cover;
  border-radius: 12px;
 `;
 
 export const CardContent = styled.div`
+ height: 100%;
  padding: 14px 4px 4px 4px;
  flex: 1;
 
@@ -56,6 +69,12 @@ export const CarDetails = styled.p`
  color: ${({ theme }) => theme.colors.gray};
  font-size: 12px;
  margin-bottom: 4px;
+
+ span:not(:last-child)::after {
+  content: "|";
+  margin: 0 8px;
+  color: ${({ theme }) => theme.colors.gray};
+ }
 `;
 
 export const LearnMoreButton = styled.button`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardGrid = styled.div`
+export const Card = styled.ul`
  display: grid;
  gap: 20px;
  margin-bottom: 20px;

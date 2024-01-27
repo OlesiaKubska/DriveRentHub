@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import ImageWithFallback from "../ImageWithFallback/ImageWithFallback";
 
 import {
- Card,
+ CardItem,
  CardContent,
  CarTitle,
  CarDetails,
@@ -15,7 +15,7 @@ import HeartIcon from "../HeartIcon/HeartIcon";
 
 const AdvertCard = ({ advert, onOpenModal }) => {
  return (
-  <Card>
+  <CardItem>
    <CardImageContainer>
     <ImageWithFallback
      src={advert.img}
@@ -33,18 +33,21 @@ const AdvertCard = ({ advert, onOpenModal }) => {
      <Span>{`${advert.rentalPrice}`}</Span>
     </div>
     <CarDetails>
-     {`${advert.address.split(", ").slice(-2).join(" | ")} | ${
-      advert.rentalCompany
-     } | ${"Premium"}`}
+     <span>{`${advert.address.split(", ").slice(-2).join(" | ")}`}</span>
+     <span>{`${advert.rentalCompany}`}</span>
+     <span>{`${"Premium"}`}</span>
     </CarDetails>
     <CarDetails>
-     {`${advert.type} | ${advert.model} | ${advert.id} | ${advert.functionalities[0]}`}
+     <span>{`${advert.type}`}</span>
+     <span>{`${advert.model}`}</span>
+     <span>{`${advert.id}`}</span>
+     <span>{`${advert.functionalities[0]}`}</span>
     </CarDetails>
     <LearnMoreButton onClick={() => onOpenModal(advert.id)}>
      Learn more
     </LearnMoreButton>
    </CardContent>
-  </Card>
+  </CardItem>
  );
 };
 

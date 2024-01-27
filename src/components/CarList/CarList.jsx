@@ -5,7 +5,7 @@ import { getFilteredAdverts, selectPagination } from "../../redux/selectors";
 import { incrementPage } from "../../redux/advertsSlice";
 import AdvertCard from "../AdvertCard/AdvertCard";
 import ModalLearnMore from "../ModalLearnMore/ModalLearnMore";
-import { CardGrid, Button } from "./CarList.styled";
+import { Card, Button } from "./CarList.styled";
 
 const CarList = () => {
  const [isModalOpen, setModalOpen] = useState(false);
@@ -48,7 +48,7 @@ const CarList = () => {
 
  return (
   <div>
-   <CardGrid>
+   <Card>
     {adverts.map((advert) => (
      <AdvertCard
       key={advert.id}
@@ -56,7 +56,7 @@ const CarList = () => {
       onOpenModal={handleOpenModal}
      />
     ))}
-   </CardGrid>
+   </Card>
    {showLoadMoreButton && <Button onClick={handleLoadMore}>Load more</Button>}
    <ModalLearnMore
     isOpen={isModalOpen}
