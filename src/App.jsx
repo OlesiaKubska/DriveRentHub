@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Wrapper } from "./App.styled";
 import Loader from "./components/Loader/Loader";
+import NotFound from "./components/NotFound/NotFound";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage"));
@@ -16,6 +17,7 @@ const App = () => {
      <Route path="/catalog" element={<CatalogPage />} />
      <Route path="/favorites" element={<FavoritesPage />} />
      <Route path="*" element={<Navigate to="/" replace />} />
+     <Route path="*" element={<NotFound />} />
     </Routes>
    </Suspense>
   </Wrapper>
